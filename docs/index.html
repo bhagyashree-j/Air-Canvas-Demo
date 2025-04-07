@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Canvas - Interactive Demo</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <nav class="bg-purple-700 text-white py-4 shadow-md">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Air Canvas</h1>
+            <div class="flex space-x-4">
+                <a href="https://github.com/bhagyashree-j/air-canvas" target="_blank" class="hover:text-gray-200">
+                    <i class="fab fa-github text-xl"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="py-12 bg-gradient-to-r from-purple-600 to-indigo-600 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-4">Air Canvas: Draw in the Air</h2>
+            <p class="text-xl max-w-2xl mx-auto">
+                A gesture-based drawing application that uses computer vision to track colored objects and turn hand movements into digital art.
+            </p>
+            <div class="mt-6">
+                <img src="images/drawing-demo.png" alt="Air Canvas Demo" class="max-w-lg mx-auto rounded-lg shadow-lg border-4 border-white">
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-12">
+        <!-- Interactive Demo Section -->
+        <section class="mb-16">
+            <h3 class="text-2xl font-bold mb-6 text-center">Interactive Demo</h3>
+            <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="p-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <p class="mb-4">Try out this simplified version of Air Canvas. Choose a color and draw on the canvas:</p>
+                            <div class="flex justify-center space-x-4 mb-4">
+                                <button class="color-btn bg-blue-500 active" data-color="blue"></button>
+                                <button class="color-btn bg-green-500" data-color="green"></button>
+                                <button class="color-btn bg-red-500" data-color="red"></button>
+                                <button class="color-btn bg-yellow-400" data-color="yellow"></button>
+                                <button class="clear-btn px-4 py-2 bg-gray-200 rounded-md">Clear</button>
+                            </div>
+                            <div class="canvas-container">
+                                <canvas id="drawingCanvas" class="border border-gray-300 rounded-lg"></canvas>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold mb-4">Actual Application</h4>
+                            <p class="mb-4">The real Air Canvas application features:</p>
+                            <ul class="list-disc pl-6 space-y-2 mb-4">
+                                <li>Real-time webcam-based object tracking</li>
+                                <li>HSV color space filtering with adjustable parameters</li>
+                                <li>Multi-color drawing capabilities</li>
+                                <li>Interactive color selection</li>
+                            </ul>
+                            <img src="images/multicolor-demo.png" alt="Real Air Canvas Application" class="rounded-lg shadow-md">
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-100 p-6">
+                    <p>Note: This web demo simulates the drawing functionality. The actual Python application uses your webcam and computer vision to track colored objects in real-time.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="mb-16">
+            <h3 class="text-2xl font-bold mb-6 text-center">How It Works</h3>
+            <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="p-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="text-xl font-semibold mb-3">1. Object Detection</h4>
+                            <p>The application uses OpenCV to detect colored objects (like a colored tip of a finger or a pen cap) in the webcam feed.</p>
+                            <div class="mt-4">
+                                <img src="images/interface-demo.png" alt="Object Detection Interface" class="rounded-lg shadow-md">
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold mb-3">2. Color Selection</h4>
+                            <p>Users can select different colors by hovering over the color panels at the top of the screen.</p>
+                            <div class="mt-4">
+                                <img src="images/color.png" alt="Color Selection and Usage" class="rounded-lg shadow-md">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+                        <div>
+                            <h4 class="text-xl font-semibold mb-3">3. Drawing Mechanism</h4>
+                            <p>As you move the colored object, the application tracks its path and draws lines connecting the points.</p>
+                            <div class="mt-4">
+                                <img src="images/drawing-demo.png" alt="Drawing Hello with Finger Tracking" class="rounded-lg shadow-md">
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold mb-3">4. Computer Vision Features</h4>
+                            <p>The application uses binary masking (shown in the mask window) to isolate and track colored objects in real-time.</p>
+                            <div class="mt-4">
+                                <img src="images/multicolor-demo.png" alt="Binary Mask and Color Tracking" class="rounded-lg shadow-md">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Code Highlights Section -->
+        <section class="mb-16">
+            <h3 class="text-2xl font-bold mb-6 text-center">Code Highlights</h3>
+            <div class="max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                        <div class="p-6">
+                            <h4 class="text-xl font-semibold mb-3">Color Detection</h4>
+                            <pre class="bg-gray-800 text-white p-4 rounded-md overflow-x-auto">
+<code>hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+Upper_hsv = np.array([u_hue, u_saturation, u_value])
+Lower_hsv = np.array([l_hue, l_saturation, l_value])
+Mask = cv2.inRange(hsv, Lower_hsv, Upper_hsv)
+
+# Apply morphology operations to clean up the mask
+Mask = cv2.erode(Mask, kernel, iterations=1)
+Mask = cv2.morphologyEx(Mask, cv2.MORPH_OPEN, kernel)
+Mask = cv2.dilate(Mask, kernel, iterations=1)</code>
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                        <div class="p-6">
+                            <h4 class="text-xl font-semibold mb-3">Contour Detection</h4>
+                            <pre class="bg-gray-800 text-white p-4 rounded-md overflow-x-auto">
+<code>cnts, _ = cv2.findContours(Mask.copy(), 
+                          cv2.RETR_EXTERNAL,
+                          cv2.CHAIN_APPROX_SIMPLE)
+
+if len(cnts) > 0:
+    # Find the largest contour
+    cnt = sorted(cnts, key=cv2.contourArea, reverse=True)[0]
+    
+    # Get minimum enclosing circle
+    ((x, y), radius) = cv2.minEnclosingCircle(cnt)
+    
+    # Draw the circle
+    cv2.circle(frame, (int(x), int(y)), int(radius), 
+               (0, 255, 255), 2)
+    
+    # Calculate centroid
+    M = cv2.moments(cnt)
+    center = (int(M['m10'] / M['m00']), 
+              int(M['m01'] / M['m00']))</code>
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                        <div class="p-6">
+                            <h4 class="text-xl font-semibold mb-3">Drawing Implementation</h4>
+                            <pre class="bg-gray-800 text-white p-4 rounded-md overflow-x-auto">
+<code># Points are stored in different deques based on color
+points = [bpoints, gpoints, rpoints, ypoints]
+
+# Draw lines between consecutive points
+for i in range(len(points)):
+    for j in range(len(points[i])):
+        for k in range(1, len(points[i][j])):
+            if points[i][j][k - 1] is None or points[i][j][k] is None:
+                continue
+            # Draw line on the frame
+            cv2.line(frame, points[i][j][k - 1], 
+                    points[i][j][k], colors[i], 2)
+            # Draw line on the paint window
+            cv2.line(paintWindow, points[i][j][k - 1], 
+                    points[i][j][k], colors[i], 2)</code>
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                        <div class="p-6">
+                            <h4 class="text-xl font-semibold mb-3">Technology Stack</h4>
+                            <div class="space-y-4">
+                                <div>
+                                    <h5 class="font-semibold">Python</h5>
+                                    <p>Core programming language for the application</p>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold">OpenCV (cv2)</h5>
+                                    <p>Computer vision library for image processing, color detection, and contour finding</p>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold">NumPy</h5>
+                                    <p>Array manipulation and mathematical operations</p>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold">Computer Vision Techniques</h5>
+                                    <p>HSV color space, contour detection, morphological operations</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Installation Guide Section -->
+        <section class="mb-16">
+            <h3 class="text-2xl font-bold mb-6 text-center">Installation Guide</h3>
+            <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="p-6">
+                    <ol class="space-y-6">
+                        <li>
+                            <h4 class="text-xl font-semibold mb-2">1. Clone the Repository</h4>
+                            <pre class="bg-gray-800 text-white p-4 rounded-md overflow-x-auto">
+<code>git clone https://github.com/bhagyashree-j/air-canvas.git
+cd air-canvas</code>
+                            </pre>
+                        </li>
+                        <li>
+                            <h4 class="text-xl font-semibold mb-2">2. Install Dependencies</h4>
+                            <pre class="bg-gray-800 text-white p-4 rounded-md overflow-x-auto">
+<code>pip install numpy opencv-python</code>
+                            </pre>
+                        </li>
+                        <li>
+                            <h4 class="text-xl font-semibold mb-2">3. Run the Application</h4>
+                            <pre class="bg-gray-800 text-white p-4 rounded-md overflow-x-auto">
+<code>python air_canvas.py</code>
+                            </pre>
+                        </li>
+                        <li>
+                            <h4 class="text-xl font-semibold mb-2">4. Usage Instructions</h4>
+                            <ul class="list-disc pl-6 space-y-2">
+                                <li>Adjust the color trackbars to detect your colored object (a colored pen cap or finger tip works well)</li>
+                                <li>Use the colored object to hover over the color selection rectangles at the top</li>
+                                <li>Move your object in the air to draw on the canvas</li>
+                                <li>Hover over the "CLEAR ALL" button to reset the canvas</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>Created by Bhagyashree Jena</p>
+            <div class="flex justify-center space-x-6 mt-4">
+                <a href="https://github.com/bhagyashree-j" target="_blank" class="text-gray-300 hover:text-white">
+                    <i class="fab fa-github text-xl"></i>
+                </a>
+                <a href="https://linkedin.com/in/bhagyashree-jena" target="_blank" class="text-gray-300 hover:text-white">
+                    <i class="fab fa-linkedin text-xl"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
