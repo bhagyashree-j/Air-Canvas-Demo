@@ -18,7 +18,7 @@ Air Canvas is a gesture-based drawing application that uses computer vision tech
 3. **Drawing Mechanism**: As you move the colored object, the application tracks its path and draws lines connecting the points.
 4. **Computer Vision**: The app uses binary masking to isolate and track colored objects in real-time.
 
-![Object Tracking](docs/images/multicolor-demo.png)
+![Object Tracking](images/multicolor-demo.png)
 
 ## Tech Stack
 
