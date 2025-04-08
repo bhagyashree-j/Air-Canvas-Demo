@@ -56,7 +56,7 @@ Air Canvas is a gesture-based drawing application that uses computer vision tech
 
 ## Demo
 
-An interactive web demo is available at [https://bhagyashree-j.github.io/air-canvas/](https://bhagyashree-j.github.io/air-canvas/). This is a simplified version that demonstrates the drawing functionality, while the actual application uses computer vision for gesture-based input.
+An interactive web demo is available at [https://bhagyashree-j.github.io/air-canvas/](https://bhagyashree-j.github.io/Air-Canvas-Demo/). This is a simplified version that demonstrates the drawing functionality, while the actual application uses computer vision for gesture-based input.
 
 ## Project Background
 
