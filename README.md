@@ -2,7 +2,7 @@
 
 Air Canvas is a gesture-based drawing application that uses computer vision techniques to track colored objects and turn hand movements into digital art. Using just your webcam and a colored object (like a pen cap or your fingertip), you can draw in the air and see your creations appear on screen in real-time.
 
-![Air Canvas Demo](docs/images/drawing-demo.png)
+![Air Canvas Demo](images/drawing-demo.png)
 
 ## Features
 
